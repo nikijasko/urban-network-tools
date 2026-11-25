@@ -1,7 +1,7 @@
 # Phase 1: network pipeline
 
 Workstream thread: Phase 1 network pipeline. Last updated: 2026-11-25.
-Status: **Steps 1–3 done; plan approved 2026-11-25. Step 4: stopped here.** Next: hub writes the Claude Code setup prompt; scripts are written and tested there, Olskroken first.
+Status: **Steps 1–3 done; plan approved 2026-11-25. Step 4: Claude Code setup done (2026-11-25).** Next: build pipeline step 1 (download) for Olskroken in Claude Code, one step at a time.
 
 ---
 
@@ -88,5 +88,15 @@ Source: PST documentation v3.2.5 (2023-11-28); v3.3.1 notes (2024-11). User runs
 - Parallel-path test can drop real paths or keep duplicates → group C exported for review; threshold tunable.
 - Pedestrian squares mapped as areas are skipped → gaps on squares (matters for Inom Vallgraven later).
 
-## Step 4: STOP
-Plan approved. No code written here. Next: Claude Code setup (prompt from the hub), then implement steps 1–10 for Olskroken.
+## Step 4: Claude Code setup – DONE (2026-11-25)
+Plan approved. No code written in the Project thread. Claude Code setup session 1 results below; next: implement steps 1–10 for Olskroken.
+
+### Session 1: setup (Claude Code, 2026-11-25)
+- **Machine:** Intel Mac (Core i7, `osx-64`), macOS 26.6.2, git 2.39.5 (Xcode command line tools). Disk ~95 % full (26 GB free): keep an eye on space for city-scale runs.
+- **Repo** cloned to `/Users/njasko/Documents/urban-network-tools`. Added `docs/` (00, 01, 03), `CLAUDE.md` (key rules + pointers to docs), `LICENSE` (GPL-3.0 text from gnu.org), `.gitignore` (excludes `.pixi/`, `data/`, `runs/`, `output(s)/`, `cache/`, OSM extracts, GeoPackage temp files, Python cache, `.DS_Store`). Small `.gpkg` test files are not excluded.
+- **Doc paths:** in the repo the Project docs live in `docs/`, not `claude/`. `02-tool-inventory.md` is not in the repo yet.
+- **GitHub access:** SSH key `~/.ssh/id_ed25519_github` (GitHub only, no passphrase), via `~/.ssh/config`; remote is `git@github.com:nikijasko/urban-network-tools.git`. Commits use name "Niki Jasko" and the GitHub noreply email (personal email kept private).
+- **Environment:** pixi 0.85.0 (in `~/.pixi`). `pixi.toml` + `pixi.lock` in the repo, conda-forge only, platforms `osx-64` and `osx-arm64`. Packages: python 3.12, osmnx, neatnet, momepy, geopandas, shapely, pyyaml, pyogrio (GeoPackage I/O). Environment ~820 MB in `.pixi/` (not committed).
+- **Resolved versions (all import OK, GeoPackage round trip in EPSG:3007 OK):** Python 3.12.16, osmnx 2.2.0, neatnet 0.1.6, momepy 1.0.0, geopandas 1.2.0, shapely 2.2.0, pyyaml 6.0.3, pyogrio 0.13.0, networkx 3.7, pandas 3.1.1, numpy 2.5.5, pyproj 3.8.0, libpysal 4.15.1, scipy 1.18.1, GDAL 3.13.3, PROJ 9.9.0. Note: momepy is 1.0 (the plan was researched without a fixed momepy version); check its API when writing steps 6–7.
+- **Open:** licence field in `pixi.toml` set to `GPL-3.0-or-later` (the brief says "GPL-3.0"; "only" vs "or later" to confirm). The pixi installer sends an anonymous install ping; telemetry can be switched off with `PIXI_NO_TELEMETRY=1`.
+- **Next session:** pipeline step 1 (download) for Olskroken: area config YAML, core polygon `olskroken_core.gpkg`, custom walkable filter (verify whether OSMnx "walk" excludes `highway=cycleway`).

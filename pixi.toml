@@ -1,0 +1,20 @@
+[workspace]
+name = "urban-network-tools"
+description = "QGIS tools for street network creation and urban morphology analysis"
+authors = ["Niki Jasko"]
+license = "GPL-3.0-or-later"
+channels = ["conda-forge"]
+# osx-64 = Intel Mac (the development machine); osx-arm64 = Apple Silicon Mac
+platforms = ["osx-64", "osx-arm64"]
+
+[tasks]
+
+[dependencies]
+python = "3.12.*"
+osmnx = ">=2.2.0,<3"
+neatnet = ">=0.1.6,<0.2"
+momepy = ">=1.0.0,<2"
+geopandas = ">=1.2.0,<2"
+shapely = ">=2.2.0,<3"
+pyyaml = ">=6.0.3,<7"
+pyogrio = ">=0.13.0,<0.14"
