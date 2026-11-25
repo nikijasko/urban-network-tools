@@ -1,0 +1,30 @@
+# pixi environment (rebuilt from pixi.toml + pixi.lock)
+.pixi/
+
+# Large data and run outputs: these belong in /Users/njasko/Documents/QGIS_Claude
+data/
+runs/
+output/
+outputs/
+cache/
+*.osm
+*.osm.pbf
+
+# GeoPackage temporary files
+*.gpkg-wal
+*.gpkg-shm
+*.gpkg-journal
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# macOS and QGIS clutter
+.DS_Store
+*.qgs~
+*.qgz~
+
+# Local secrets and settings
+.env
+.claude/settings.local.json
